@@ -2,6 +2,9 @@
   <div class="row">
    <div class="col-lg-8 offset-lg-2">
        <div class="table-responsive">
+            <router-link :to="{path:'users/create'}" class="btn btn-info float-end m-2">
+                <i class="fa-solid fa-database"></i>
+            </router-link>
            <table class="table table-bordered table-hover">
                <thead>
                    <tr>
@@ -25,7 +28,7 @@
                        <td>{{ user.phone_number }}</td>
                      
                        <td>
-                           <router-link :to="{path:'edit/'+user.id_user}" class="btn btn-warning">
+                           <router-link :to="{path:'/users/edit/'+user.id_user}" class="btn btn-warning">
                                <i class="fa-solid fa-edit"></i>
                            </router-link> &nbsp;
                            <button class="btn btn-danger" v-on:click="deleteUser(user.id_user, user.name)">

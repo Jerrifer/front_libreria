@@ -1,16 +1,60 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import UserList from '../views/users/UserListView.vue'
-import UserCreate from '../views/users/UserCreateView.vue'
-import UserEdit from '../views/users/UserEditView.vue'
+import UserList from '../views/users/UserListView'
+import UserCreate from '../views/users/UserCreateView'
+import UserEdit from '../views/users/UserEditView'
 
-import AuthorList from '../views/authors/AuthorListView.vue'
-import AuthorCreate from '../views/authors/AuthorCreateView.vue'
-import AuthorEdit from '../views/authors/AuthorEditView.vue'
+import AuthorList from '../views/authors/AuthorListView'
+import AuthorCreate from '../views/authors/AuthorCreateView'
+import AuthorEdit from '../views/authors/AuthorEditView'
+
+import EditorialList from '../views/editorials/EditorialListView'
+import EditorialCreate from '../views/editorials/EditorialCreateView'
+import EditorialEdit from '../views/editorials/EditorialEditView'
+
+import LoginView from '../views/auth/LoginView'
+
+import HomeView from '../views/home/HomeView'
 
 
 
 const routes = [
+  // {
+  //   path: '*',
+  //   redirect: '/login'
+  // },
+  //0
+  {
+    path: '/',
+    name: 'home',
+    component: HomeView
+  },
+
+  //Login
+  {
+    path: '/login',
+    name: 'login',
+    component: LoginView
+  },
+
+  //autores
+  {
+    path: '/editorials',
+    name: 'editorials',
+    component: EditorialList
+  },
+  {
+    path: '/editorials/create',
+    name: 'editorialcreate',
+    component:  EditorialCreate
+  },
+  {
+    path: '/editorials/edit/:id',
+    name: 'editorialedit',
+    component:  EditorialEdit
+  },
+
+  //autores
   {
     path: '/authors',
     name: 'authors',
@@ -27,7 +71,7 @@ const routes = [
     component:  AuthorEdit
   },
 
-  
+  //users
   {
     path: '/users',
     name: 'users',
