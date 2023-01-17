@@ -37,6 +37,11 @@
                             </select>
                          </div>
 
+                         <div class="input-group mb-3">
+                            <span class="input-group-text"><strong>Documento</strong></span>
+                            <input class="form-control" type="file">
+                         </div>
+
                          <div class="d-grid col-6 mx-auto">
                              <button class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
                          </div>
@@ -110,8 +115,6 @@ export default{
         createMaterial() {
             event.preventDefault();
                 
-                //console.log(this.name);
-
                 var parametros = {
                     name_material: this.name.trim(),
                     type_material_id: this.selectedType,
