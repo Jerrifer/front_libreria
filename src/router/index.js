@@ -12,6 +12,19 @@ import EditorialList from '../views/editorials/EditorialListView'
 import EditorialCreate from '../views/editorials/EditorialCreateView'
 import EditorialEdit from '../views/editorials/EditorialEditView'
 
+import EdLevelslist from '../views/education_levels/EdLevelsListView'
+import EdLevelsCreate from '../views/education_levels/EdLevelsCreateView'
+import EdLevelsEdit from '../views/education_levels/EdLevelsEditView'
+
+import TypeMalist from '../views/type_materials/TypeMaListView'
+import TypeMaCreate from '../views/type_materials/TypeMaCreateView'
+import TypeMaEdit from '../views/type_materials/TypeMaEditView'
+
+
+import Materialslist from '../views/materials/MaterialsListView'
+import MaterialsCreate from '../views/materials/MaterialsCreateView'
+import MaterialsEdit from '../views/materials/MaterialsEditView'
+
 import LoginView from '../views/auth/LoginView'
 
 import HomeView from '../views/home/HomeView'
@@ -86,7 +99,62 @@ const routes = [
     path: '/users/edit/:id',
     name: 'useredit',
     component:  UserEdit
+  },
+
+
+  //Education Levels
+  {
+    path: '/edlevels',
+    name: 'edlevels',
+    component: EdLevelslist
+  },
+  {
+    path: '/edlevels/create',
+    name: 'edlevelscreate',
+    component:  EdLevelsCreate
+  },
+  {
+    path: '/edlevels/edit/:id',
+    name: 'edlevelsedit',
+    component:  EdLevelsEdit
+  },
+
+
+  //Type materials
+  {
+    path: '/typematerials',
+    name: 'typematerials',
+    component: TypeMalist
+  },
+  {
+    path: '/typematerials/create',
+    name: 'typematerialscreate',
+    component:  TypeMaCreate
+  },
+  {
+    path: '/typematerials/edit/:id',
+    name: 'typematerialsedit',
+    component:  TypeMaEdit
+  },
+
+
+  //Materials
+  {
+    path: '/materials',
+    name: 'materials',
+    component: Materialslist
+  },
+  {
+    path: '/materials/create',
+    name: 'materialscreate',
+    component:  MaterialsCreate
+  },
+  {
+    path: '/materials/edit/:id',
+    name: 'materialsedit',
+    component:  MaterialsEdit
   }
+
 ]
 
 const router = createRouter({

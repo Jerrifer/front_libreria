@@ -2,11 +2,11 @@
     <div class="row mt-3">
         <div class="col-md-6 offset-md-3"> 
             <div class="card">
-                <div class="card-header bg-dark text-white text-center">Actualizar autor</div>
+                <div class="card-header bg-dark text-white text-center">Actualizar nivel educativo</div>
                 <div class="card-body">
-                    <form v-on:submit="updateAuthor">
+                    <form v-on:submit="updateEdlevel">
                         <div class="input-group mb-3">
-                            <span class="input-group-text"> <strong>Nombre</strong> </span>
+                            <span class="input-group-text"><strong>Nombre</strong></span>
                             <input type="text" v-model="name" id="name" class="form-control" maxlength="50" placeholder="Nombre" required>
                         </div>
                         <div class="d-grid col-6 mx-auto">
@@ -30,38 +30,38 @@ export default{
    },
    mounted(){
         const route = useRoute();
-        this.id_user = route.params.id;
-        this.getAuthor();
+        this.id_education_level = route.params.id;
+        this.getEdlevel();
    },
    methods:{
 
 
-        getAuthor() {
-            axios.get('http://localhost:8000/api/authors/'+this.id_user).then(
+        getEdlevel() {
+            axios.get('http://localhost:8000/api/educationlevels/'+this.id_education_level).then(
                 res => (
-                    this.name = res.data.results.name_author
+                    this.name = res.data.results.level
                 )
             )
         },
 
-       updateAuthor() {
+        updateEdlevel() {
            event.preventDefault();
            var parametros = {
-               name_author: this.name.trim()
+               level: this.name.trim()
            }
 
            console.log(parametros);
 
-           var url = 'http://localhost:8000/api/authors/'+this.id_user;
+           var url = 'http://localhost:8000/api/educationlevels/'+this.id_education_level;
            
            axios({method:'PUT', url:url, data:parametros}).then(function(respuesta){
                    console.log(respuesta.data);
                    var status = respuesta.data['status'];
 
                    if (status == 'success') {
-                       show_alerta('Author actualizado correctamente', status);
+                       show_alerta('Nivel educativo actualizado correctamente', status);
                        window.setTimeout(function() {
-                           window.location.href='/authors';
+                           window.location.href='/edlevels';
                        }, 1000);
                    }else{
                        var listado ='';

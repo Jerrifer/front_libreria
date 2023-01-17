@@ -2,8 +2,8 @@
     <div class="row">
         <div class="col-lg-8 offset-lg-2">
             <div class="table-responsive">
-                <h1 class="float-center">Editoriales</h1>
-                <router-link to="/editorials/create" class="btn btn-info float-end m-2">
+                <h1 class="float-center">Niveles educativos</h1>
+                <router-link to="/edlevels/create" class="btn btn-info float-end m-2">
                     <i class="fa-solid fa-database"></i> Registrar
                 </router-link>
                 <table
@@ -11,20 +11,20 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Nombre</th>
+                            <th>Nivel Educativo</th>
                         </tr> 
                     </thead>
 
                     <tbody class="table-group-divider" id="contenido">
-                        <tr v-for="editorial in editorials" :key="editorial.id_editorial">
-                            <td>{{ editorial.id_editorial }}</td>
-                            <td>{{ editorial.name_editorial }}</td> 
+                        <tr v-for="edLevel in edLevels" :key="edLevel.id_education_level">
+                            <td>{{ edLevel.id_education_level }}</td>
+                            <td>{{ edLevel.level }}</td> 
                             
                             <td>
-                                <router-link :to="{path:'editorials/edit/'+editorial.id_editorial}" class="btn btn-warning">
+                                <router-link :to="{path:'edlevels/edit/'+edLevel.id_education_level}" class="btn btn-warning">
                                     <i class="fa-solid fa-edit"></i>
                                 </router-link> &nbsp;
-                                <button class="btn btn-danger" v-on:click="deleteEditorial(editorial.id_editorial, editorial.name_editorial)">
+                                <button class="btn btn-danger" v-on:click="deleteEdLevel(edLevel.id_education_level, edLevel.level)">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </td>
@@ -43,37 +43,35 @@ import axios from 'axios';
 import Swal from "sweetalert2";
 import { show_alerta } from '@/alerts';
 
-export default{
-    data(){
-        return {editorials: null}
+export default {
+
+    data() {
+        return { edLevels: null,
+            urlEdLevel: 'http://localhost:8000/api/educationlevels'}
     },
-
-    mounted(){
-
-        this.getEditorials();
-
+    mounted() {
+        this.getEdLevels();
     },
-
-    methods:{
-
-        getEditorials() {
-            axios.get('http://localhost:8000/api/editorials').then(
-                respose => (
-                    this.editorials = respose.data.results
-                )
+    methods: {
+        getEdLevels() {
+            axios.get(this.urlEdLevel).then(
+                response => {{
+                    this.edLevels = response.data.results;
+                }}
             )
         },
 
-        deleteEditorial(id, name){
-            var url = 'http://localhost:8000/api/editorials/'+id;
+        deleteEdLevel(id, name) {
+            var url = this.urlEdLevel+'/'+id;
 
+            //SweetAlert
             const swalWithBootstrapButtons = Swal.mixin({
                 customClass:{confirmButton: 'btn btn-success me-3',cancelButton:'btn btn-danger'},
                 buttonsStyling:false
             });
             swalWithBootstrapButtons.fire({
-                title: 'Seguro de eliminar el editorial '+name,
-                text: 'Se perderá la información del editorial',
+                title: 'Seguro de eliminar el nivel educativo'+name,
+                text: 'Se perderá la información del nivel educativo',
                 icon: 'question',
                 showCancelButton:true,
                 confirmButtonText:'<i class="fa-solid fa-check"></i> Si, eliminar',
@@ -82,14 +80,17 @@ export default{
 
                 //Confirma eliminación
                 if (ressult.isConfirmed) {
+                    
                     axios({method:'DELETE', url:url, data:id}).then(function(respuesta){
-                        
+                        console.log(respuesta.data);
                         var status = respuesta.data['status'];
 
                         if (status == 'success') {
-                            show_alerta('Eliminado exitosamente', status);
+
+                            show_alerta('Eliminado exitosamente', 'success');
+                            
                             window.setTimeout(function() {
-                                window.location.href='/editorials';
+                                window.location.href='/edlevels';
                             }, 1000);
                         }else{
                             var listado ='';
@@ -100,14 +101,14 @@ export default{
                             show_alerta(listado, 'error');
                         }
                     }).catch(function(error){
-                        show_alerta('Error en la solicitud', error);
+                        console.log(error);
+
+                        show_alerta('Error en la solicitud', 'error');
                         })
                 }else{
-                     show_alerta('operación cancelada', 'info');
-                }
-            });
+                     show_alerta('operación cancelada', 'success');
+                }})
         }
     }
-
 }
 </script>

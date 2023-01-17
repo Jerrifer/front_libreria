@@ -7,28 +7,28 @@
 
                     <h1>Hola</h1>
                      <form v-on:submit="guardar">
-                         <div class="input-group mb-3">
-                             <span class="input-group-text"><i class="fa-solid fa-database"></i></span>
+                        <div class="input-group mb-3">
+                             <span class="input-group-text"> <strong>Nombre</strong> </span>
                              <input type="text" v-model="name" id="name" class="form-control" maxlength="50" placeholder="Nombre" required>
                          </div>
                          <div class="input-group mb-3">
-                             <span class="input-group-text"><i class="fa-solid fa-database"></i></span>
+                             <span class="input-group-text"> <strong>Apellido</strong> </span>
                              <input type="text" v-model="lastname" id="lastname" class="form-control" maxlength="50" placeholder="Apellido" required>
                          </div>
                          <div class="input-group mb-3">
-                             <span class="input-group-text"><i class="fa-solid fa-database"></i></span>
-                             <input type="text" v-model="email" id="email" class="form-control" maxlength="50" placeholder="Correo" required>
+                             <span class="input-group-text"> <strong>Correo</strong> </span>
+                             <input type="text" v-model="email" id="usernames" class="form-control" maxlength="50" placeholder="Correo" required>
                          </div>
                          <div class="input-group mb-3">
-                             <span class="input-group-text"><i class="fa-solid fa-database"></i></span>
-                             <input type="text" v-model="password" id="password" class="form-control" maxlength="50" placeholder="Contraseña" required>
+                             <span class="input-group-text"> <strong>Contraseña</strong> </span>
+                             <input type="text" v-model="password" id="user_last_names" class="form-control" maxlength="50" placeholder="Contraseña" required>
                          </div>
                          <div class="input-group mb-3">
-                             <span class="input-group-text"><i class="fa-solid fa-database"></i></span>
+                             <span class="input-group-text"> <strong>Número cel</strong> </span>
                              <input type="text" v-model="phone_number" id="phone_number" class="form-control" maxlength="50" placeholder="Número cel" required>
                          </div>
                          <div class="d-grid col-6 mx-auto">
-                             <button class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i>Actualizar</button>
+                             <button class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Actualizar</button>
                          </div>
                      </form>
                  </div>

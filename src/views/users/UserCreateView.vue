@@ -6,7 +6,6 @@
                  <div class="card-body">
                      <form v-on:submit="guardar">
                          <div class="input-group mb-3">
-                           
                              <span class="input-group-text"> <strong>Nombre</strong> </span>
                              <input type="text" v-model="name" id="name" class="form-control" maxlength="50" placeholder="Nombre" required>
                          </div>
@@ -24,7 +23,7 @@
                          </div>
                          <div class="input-group mb-3">
                              <span class="input-group-text"> <strong>Número cel</strong> </span>
-                             <input type="number" v-model="phone_number" id="phone_number" class="form-control" maxlength="50" placeholder="Número cel" required>
+                             <input type="text" v-model="phone_number" id="phone_number" class="form-control" maxlength="50" placeholder="Número cel" required>
                          </div>
                          <div class="d-grid col-6 mx-auto">
                              <button class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
@@ -61,10 +60,10 @@
                     show_alerta('escribe la contraseña','warning','nombre');
                 }else if(this.lastname.trim() === '') {
                     show_alerta('escribe el apellido','warning','nombre');
-                }else if(this.phone_number.trim() === '') {
-                    show_alerta('escribe el número telefónico','warning','nombre');
                 }else if(this.email.trim() === '') {
                     show_alerta('escribe el correo','warning','nombre');
+                }else if(this.phone_number.trim() === '') {
+                    show_alerta('escribe el número telefónico','warning','nombre');
                 }else  {
                     var parametros = {  name:this.name.trim(),
                                         password:this.password.trim(),

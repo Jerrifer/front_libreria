@@ -2,8 +2,8 @@
   <div class="row">
    <div class="col-lg-8 offset-lg-2">
        <div class="table-responsive">
-            <router-link :to="{path:'users/create'}" class="btn btn-info float-end m-2">
-                <i class="fa-solid fa-database"></i>
+            <router-link to="/users/create" class="btn btn-info float-end m-2">
+                <i class="fa-solid fa-database"></i> Registrar
             </router-link>
            <table class="table table-bordered table-hover">
                <thead>

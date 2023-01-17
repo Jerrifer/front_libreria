@@ -3,7 +3,9 @@
         <div class="col-lg-8 offset-lg-2">
             <div class="table-responsive">
                 <h1 class="float-center">Autores</h1>
-                <router-link to="/authors/create" class="btn btn-primary float-end">Registrar</router-link>
+                <router-link to="/authors/create" class="btn btn-info float-end m-2">
+                    <i class="fa-solid fa-database"></i> Registrar
+                </router-link>
                 <table
                  class="table table-bordered table-hover">
                     <thead>
@@ -39,6 +41,7 @@
 
 import axios from 'axios';
 import Swal from "sweetalert2";
+import { show_alerta } from '@/alerts';
 
 export default{
     data(){
@@ -84,7 +87,9 @@ export default{
                         var status = respuesta.data['status'];
 
                         if (status == 'success') {
-                            show_alerta(mensaje, status);
+
+                            show_alerta('Eliminado exitosamente', 'success');
+                            
                             window.setTimeout(function() {
                                 window.location.href='/authors';
                             }, 1000);
@@ -97,10 +102,10 @@ export default{
                             show_alerta(listado, 'error');
                         }
                     }).catch(function(error){
-                        show_alerta('Error en la solicitud', error);
+                        show_alerta('Error en la solicitud', 'error');
                         })
                 }else{
-                     show_alerta('operación cancelada', 'info');
+                     show_alerta('operación cancelada', 'success');
                 }})
         },
 

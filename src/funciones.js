@@ -13,9 +13,9 @@ export function enviarSolicitud(metodo,parametros,url,mensaje){
             }, 1000);
         }else{
             var listado ='';
-            var errores = respuesta.data['errores'];
+            var errores = respuesta.data['message'];
             Object.keys(errores).forEach(
-                key =>  listado += errores[key][0]+'.'
+                key =>  listado += errores[key][0]
             );
             show_alerta(listado, 'error');
         }
