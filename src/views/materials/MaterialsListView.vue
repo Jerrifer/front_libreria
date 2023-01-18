@@ -31,11 +31,11 @@
                             <td>
 
                                  <figure>
-                                    <embed :src="material.document" type="application/pdf" width="100%" height="300px" />
+                                    <embed :src="'http://127.0.0.1:8000/storage/document_folder/'+material.document" type="application/pdf" width="500" height="500" />
                                 </figure> 
-                                <!--
-                                <figure>
-                                    <img width="100" height="100" src="C:\xampp\htdocs\back_libreria\public\storage\document_folder\1673969708_imagen_2022-11-09_140137002.png" alt="">
+                                
+                                <!-- <figure>
+                                    <img width="100" height="100" src="http://127.0.0.1:8000/storage/document_folder/1674050101_c2.jpeg" alt="">
                                 </figure> -->
                                 
 
@@ -46,12 +46,15 @@
 
                             
                             <td>
-                                <router-link :to="{path:'typematerials/edit/'+material.id_material}" class="btn btn-warning">
+                                <router-link :to="{path:'materials/edit/'+material.id_material}" class="btn btn-warning">
                                     <i class="fa-solid fa-edit"></i>
                                 </router-link> &nbsp;
                                 <button class="btn btn-danger" v-on:click="deleteMaterial(material.id_material, material.name_material)">
                                     <i class="fa-solid fa-trash"></i>
-                                </button>
+                                </button> &nbsp;
+                                <router-link :to="{path:'materials/detail/'+material.id_material}" class="btn btn-info">
+                                    <i class="fa-solid fa-eye"></i>
+                                </router-link> &nbsp;
                             </td>
                         </tr>
                     </tbody> 

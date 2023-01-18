@@ -13,7 +13,7 @@
           </li>
         </ul>
       </div>
-      <button v-on:click="logout" class="font-bold rounded-md btn btn-outline-light">LogOut</button>
+      <button v-on:click="logout" class="font-bold rounded-md btn btn-outline-light"> LogOut </button>
     </div>
   </nav>
   <div class="container-fluid mt-3">

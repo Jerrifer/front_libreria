@@ -24,6 +24,7 @@ import TypeMaEdit from '../views/type_materials/TypeMaEditView'
 import Materialslist from '../views/materials/MaterialsListView'
 import MaterialsCreate from '../views/materials/MaterialsCreateView'
 import MaterialsEdit from '../views/materials/MaterialsEditView'
+import MaterialsDetail from '../views/materials/MaterialsDetailView'
 
 import LoginView from '../views/auth/LoginView'
 
@@ -153,6 +154,11 @@ const routes = [
     path: '/materials/edit/:id',
     name: 'materialsedit',
     component:  MaterialsEdit
+  },
+  {
+    path: '/materials/detail/:id',
+    name: 'materialsdetail',
+    component:  MaterialsDetail
   }
 
 ]

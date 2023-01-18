@@ -145,7 +145,7 @@ export default{
 
 
         
-        getImage(event) {
+        getDocument(event) {
             let file = event.target.files[0];
             console.log(file);
             this.document = file;
