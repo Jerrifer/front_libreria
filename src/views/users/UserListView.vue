@@ -5,7 +5,7 @@
             <router-link to="/users/create" class="btn btn-info float-end m-2">
                 <i class="fa-solid fa-database"></i> Registrar
             </router-link>
-           <table class="table table-bordered table-hover">
+           <table class="table table-hover table-dark">
                <thead>
                    <tr>
                        <th>Id</th>

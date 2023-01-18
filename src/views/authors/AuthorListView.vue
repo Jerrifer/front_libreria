@@ -7,11 +7,12 @@
                     <i class="fa-solid fa-database"></i> Registrar
                 </router-link>
                 <table
-                 class="table table-bordered table-hover">
+                 class="table table-hover table-dark">
                     <thead>
                         <tr>
                             <th>Id</th>
                             <th>Nombre</th>
+                            <th>Acciones</th>
                         </tr> 
                     </thead>
 

@@ -7,7 +7,7 @@
                     <i class="fa-solid fa-database"></i> Registrar
                 </router-link>
                 <table
-                 class="table table-bordered table-hover">
+                 class="table table-hover table-dark">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -15,6 +15,8 @@
                             <!-- <th>Autor</th> -->
                             <th>Tipo material</th>
                             <th>Editorial</th>
+                            <th>Documento</th>
+                            <th>Acciones</th>
                             <!-- <th>Nivel educativo</th> -->
 
                         </tr> 
@@ -26,6 +28,22 @@
                             <td>{{ material.name_material }}</td>
                             <td>{{ material.name_type }}</td> 
                             <td>{{ material.name_editorial }}</td>
+                            <td>
+
+                                 <figure>
+                                    <embed :src="material.document" type="application/pdf" width="100%" height="300px" />
+                                </figure> 
+                                <!--
+                                <figure>
+                                    <img width="100" height="100" src="C:\xampp\htdocs\back_libreria\public\storage\document_folder\1673969708_imagen_2022-11-09_140137002.png" alt="">
+                                </figure> -->
+                                
+
+                                <!-- <figure>
+                                    <img width="100" height="100" :src="material.document" alt="">
+                                </figure> -->
+                            </td>
+
                             
                             <td>
                                 <router-link :to="{path:'typematerials/edit/'+material.id_material}" class="btn btn-warning">
@@ -62,6 +80,7 @@ export default{
     },
 
     methods:{
+
         getMaterials(){
             axios.get(this.urlMaterial).then(
                 response=> {
