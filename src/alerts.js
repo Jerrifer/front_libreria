@@ -34,3 +34,8 @@ export function confirmar(id,name){
         }
     })
 }
+
+export const swalWithBootstrapButtons = Swal.mixin({
+        customClass:{confirmButton: 'btn btn-success me-3',cancelButton:'btn btn-danger'},
+        buttonsStyling:false
+    });

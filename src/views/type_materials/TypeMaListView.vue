@@ -3,7 +3,7 @@
         <div class="col-lg-8 offset-lg-2">
             <div class="table-responsive">
                 <h1 class="float-center">Tipos de materiales</h1>
-                <router-link to="/typematerials/create" class="btn btn-info float-end m-2">
+                <router-link to="/typematerials/create" class="btn btn-outline-dark float-end m-2">
                     <i class="fa-solid fa-database"></i> Registrar
                 </router-link>
                 <table
@@ -22,10 +22,10 @@
                             <td>{{ tmaterial.name_type }}</td> 
                             
                             <td>
-                                <router-link :to="{path:'typematerials/edit/'+tmaterial.id_type_material}" class="btn btn-warning">
+                                <router-link :to="{path:'typematerials/edit/'+tmaterial.id_type_material}" class="btn btn-outline-warning">
                                     <i class="fa-solid fa-edit"></i>
                                 </router-link> &nbsp;
-                                <button class="btn btn-danger" v-on:click="deleteTmaterial(tmaterial.id_type_material, tmaterial.name_type)">
+                                <button class="btn btn-outline-danger" v-on:click="deleteTmaterial(tmaterial.id_type_material, tmaterial.name_type)">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </td>

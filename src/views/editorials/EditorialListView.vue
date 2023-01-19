@@ -3,7 +3,7 @@
         <div class="col-lg-8 offset-lg-2">
             <div class="table-responsive">
                 <h1 class="float-center">Editoriales</h1>
-                <router-link to="/editorials/create" class="btn btn-info float-end m-2">
+                <router-link to="/editorials/create" class="btn btn-outline-dark float-end m-2">
                     <i class="fa-solid fa-database"></i> Registrar
                 </router-link>
                 <table
@@ -22,10 +22,10 @@
                             <td>{{ editorial.name_editorial }}</td> 
                             
                             <td>
-                                <router-link :to="{path:'editorials/edit/'+editorial.id_editorial}" class="btn btn-warning">
+                                <router-link :to="{path:'editorials/edit/'+editorial.id_editorial}" class="btn btn-outline-warning">
                                     <i class="fa-solid fa-edit"></i>
                                 </router-link> &nbsp;
-                                <button class="btn btn-danger" v-on:click="deleteEditorial(editorial.id_editorial, editorial.name_editorial)">
+                                <button class="btn btn-outline-danger" v-on:click="deleteEditorial(editorial.id_editorial, editorial.name_editorial)">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </td>

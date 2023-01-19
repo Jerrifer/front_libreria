@@ -40,6 +40,20 @@
                            </select>
                         </div>
 
+                        <div class="input-group mb-3">
+                           <span class="input-group-text"><strong>Autor</strong></span>
+                           <select v-model="selectedAuthor" id="educationlevels" class="form-control" maxlength="50" >
+                                <option v-for="author in authors" :key="author.id_author" v-bind:value="author.id_author" > 
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            {{ author.name_author }}
+                                        </label>
+                                    </div>
+                                </option>
+                           </select>
+                        </div>
+                        
 
                         <div class="input-group mb-3">
                            <span class="input-group-text"><strong>Documento</strong></span>
@@ -156,11 +170,9 @@ export default{
         showDocument(file) {
             let reader = new FileReader();
 
-
-            reader.onload = (e) => {
-                this.docMin = e.target.result;
+            reader.onload = (event) => {
+                this.docMin = event.target.result;
             }
-
 
             reader.readAsDataURL(file);
         },

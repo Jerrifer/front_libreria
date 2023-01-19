@@ -32,6 +32,8 @@ export default{
         const route = useRoute();
         this.id_type_material = route.params.id;
         this.getTmaterial();
+        this.getSelects(),
+        this.doc()
    },
    methods:{
 

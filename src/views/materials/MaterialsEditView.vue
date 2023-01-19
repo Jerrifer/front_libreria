@@ -49,7 +49,7 @@
 
                         <div class="input-group mb-3">
                            <figure>
-                                <embed :src="doc()" type="application/pdf" width="100%" height="300px" />
+                                <embed :src="docMin" type="application/pdf" width="100%" height="300px" />
                            </figure>
                         </div>
 
@@ -71,42 +71,104 @@
 
 export default{
    data(){
-       return {name: ''}
+       return {
+    
+            name: '',
+
+            docMin: '',
+            document:'',
+
+            typematerials: '',
+            editorials: '',
+            edlevels: '',
+            authors: '',
+
+            urlBase: 'http://localhost:8000/api/',
+            urlMaterial: 'http://localhost:8000/api/materials/',
+
+            selectedType: '',
+            selectedEditorial: '',
+            selectedEdLevel: '',
+            selectedAuthor: '',
+    }
    },
    mounted(){
         const route = useRoute();
-        this.id_type_material = route.params.id;
-        this.getTmaterial();
+        this.id_material = route.params.id;
+        this.getSelects();
+        this.getMaterial();
+
    },
    methods:{
 
 
-        getTmaterial() {
-            axios.get('http://localhost:8000/api/typematerials/'+this.id_type_material).then(
-                res => (
-                    this.name = res.data.results.name_type
+        getMaterial() {
+            axios.get(this.urlMaterial+this.id_material).then(
+                respuesta => (
+                    this.name = respuesta.data.results[0].name_material,
+                    this.docMin = 'http://127.0.0.1:8000/storage/document_folder/'+respuesta.data.results[0].document,
+                    this.selectedEditorial = respuesta.data.results[0].id_editorial,
+                    this.selectedType = respuesta.data.results[0].id_type_material,
+
+
+                    console.log(respuesta.data.results[0].id_editorial)
                 )
             )
         },
 
-        updateTmaterial() {
+        getSelects() {
+            axios.get(this.urlBase+'authors').then(
+                response => {
+                    this.authors = response.data.results
+                }
+            )
+
+
+            axios.get(this.urlBase+'educationlevels').then(
+                response => {
+                    this.edlevels = response.data.results
+                }
+            )
+
+
+            axios.get(this.urlBase+'editorials').then(
+                response => {
+                    this.editorials = response.data.results
+                }
+            )
+
+
+            axios.get(this.urlBase+'typematerials').then(
+                response => {
+                    this.typematerials = response.data.results
+                }
+            )
+        },
+
+        updateMaterial() {
            event.preventDefault();
            var parametros = {
-               name_type: this.name.trim()
+                name_material: this.name.trim(),
+                name_material: this.name.trim(),
+                type_material_id: this.selectedType,
+                editorial_id: this.selectedEditorial,
+                author_id: this.selectedAuthor,
+                education_level_id: this.selectedEdLevel,
+                document: this.document
            }
 
            console.log(parametros);
 
-           var url = 'http://localhost:8000/api/typematerials/'+this.id_type_material;
+           var url = this.urlMaterial+this.id_material;
            
            axios({method:'PUT', url:url, data:parametros}).then(function(respuesta){
                    console.log(respuesta.data);
                    var status = respuesta.data['status'];
 
                    if (status == 'success') {
-                       show_alerta('Tipo de material actualizado correctamente', status);
+                       show_alerta('Material actualizado correctamente', status);
                        window.setTimeout(function() {
-                           window.location.href='/typematerials';
+                           window.location.href='/materials';
                        }, 1000);
                    }else{
                        var listado ='';
@@ -120,7 +182,29 @@ export default{
                show_alerta('Error en la solicitud', error);
            })
                
-       }
+        },
+
+
+        getDocument(event) {
+            let file = event.target.files[0];
+            console.log(file);
+            this.document = file;
+            this.showDocument(file);
+        },
+
+
+        showDocument(file) {
+            let reader = new FileReader();
+
+
+            reader.onload = (e) => {
+                this.docMin = e.target.result;
+            }
+
+
+            reader.readAsDataURL(file);
+        },
+
    }
 }
 

@@ -3,7 +3,7 @@
         <div class="col-lg-8 offset-lg-2">
             <div class="table-responsive">
                 <h1 class="float-center">Materiales</h1>
-                <router-link to="/materials/create" class="btn btn-info float-end m-2">
+                <router-link to="/materials/create" class="btn btn-outline-dark float-end m-2">
                     <i class="fa-solid fa-database"></i> Registrar
                 </router-link>
                 <table
@@ -31,7 +31,7 @@
                             <td>
 
                                  <figure>
-                                    <embed :src="'http://127.0.0.1:8000/storage/document_folder/'+material.document" type="application/pdf" width="500" height="500" />
+                                    <embed :src="'http://127.0.0.1:8000/storage/document_folder/'+material.document" type="application/pdf" width="200" height="200" />
                                 </figure> 
                                 
                                 <!-- <figure>
@@ -46,13 +46,13 @@
 
                             
                             <td>
-                                <router-link :to="{path:'materials/edit/'+material.id_material}" class="btn btn-warning">
+                                <router-link :to="{path:'materials/edit/'+material.id_material}" class="btn btn-outline-warning">
                                     <i class="fa-solid fa-edit"></i>
                                 </router-link> &nbsp;
-                                <button class="btn btn-danger" v-on:click="deleteMaterial(material.id_material, material.name_material)">
+                                <button class="btn btn-outline-danger" v-on:click="deleteMaterial(material.id_material, material.name_material)">
                                     <i class="fa-solid fa-trash"></i>
                                 </button> &nbsp;
-                                <router-link :to="{path:'materials/detail/'+material.id_material}" class="btn btn-info">
+                                <router-link :to="{path:'materials/detail/'+material.id_material}" class="btn btn-outline-info">
                                     <i class="fa-solid fa-eye"></i>
                                 </router-link> &nbsp;
                             </td>

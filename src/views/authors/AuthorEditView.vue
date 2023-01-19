@@ -38,8 +38,9 @@ export default{
 
         getAuthor() {
             axios.get('http://localhost:8000/api/authors/'+this.id_user).then(
-                res => (
-                    this.name = res.data.results.name_author
+                response => (
+                    this.name = response.data.results.name_author
+
                 )
             )
         },
